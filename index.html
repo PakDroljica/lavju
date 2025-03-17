@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <title>Volim te ❤️</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        #loveButton {
+            font-size: 24px;
+            padding: 15px 30px;
+            cursor: pointer;
+            background-color: #ff4b5c;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+
+        #messageContainer {
+            display: none;
+            position: relative;
+            width: 200px;
+            height: 180px;
+        }
+
+        #heartShape {
+            width: 200px;
+            height: 180px;
+            background-color: red;
+            position: relative;
+            clip-path: path('M100,30 C140,-20 200,30 180,90 C170,120 100,170 100,170 C100,170 30,120 20,90 C0,30 60,-20 100,30 Z');
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        #message {
+            font-size: 24px;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            line-height: 1.2;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .heart {
+            position: absolute;
+            color: red;
+            font-size: 20px;
+            animation: fall 4s linear infinite;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <button id="loveButton">Klikni me!</button>
+
+    <div id="messageContainer">
+        <div id="heartShape">
+            <span id="message">Volim te ❤️</span>
+        </div>
+    </div>
+
+    <audio id="loveSong" src="drska-zeno-plava.mp3"></audio>
+
+    <script>
+        let count = 0;
+        const button = document.getElementById("loveButton");
+        const messageContainer = document.getElementById("messageContainer");
+        const message = document.getElementById("message");
+        const song = document.getElementById("loveSong");
+
+        function getRandomPosition() {
+            const x = Math.random() * (window.innerWidth - 150);
+            const y = Math.random() * (window.innerHeight - 100);
+            return { x, y };
+        }
+
+        button.style.left = "50%";
+        button.style.top = "50%";
+        button.style.transform = "translate(-50%, -50%)";
+        button.style.position = "absolute";
+
+        button.addEventListener("click", function() {
+            count++;
+            button.style.fontSize = 24 + count * 5 + "px";
+            button.style.padding = 15 + count * 2 + "px";
+
+            let newPos = getRandomPosition();
+            button.style.left = `${newPos.x}px`;
+            button.style.top = `${newPos.y}px`;
+            button.style.transform = "none";
+
+            if (count >= 5) {
+                button.style.display = "none";
+                messageContainer.style.display = "block";
+                message.style.display = "block";
+
+                song.play();
+
+                setInterval(generateHearts, 500);
+            }
+        });
+
+        function generateHearts() {
+            const heart = document.createElement("div");
+            heart.innerHTML = "❤️";
+            heart.classList.add("heart");
+            heart.style.left = Math.random() * window.innerWidth + "px";
+            heart.style.top = "-20px";
+            heart.style.fontSize = Math.random() * 30 + 10 + "px";
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 4000);
+        }
+    </script>
+
+</body>
+</html>
