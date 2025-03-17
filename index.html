@@ -31,12 +31,11 @@
 
         #messageContainer {
             display: none;
-            position: relative;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
         }
 
         #heartShape {
@@ -139,7 +138,7 @@
 
             if (count >= 5) {
                 button.style.display = "none";
-                messageContainer.style.display = "flex";
+                messageContainer.style.display = "block";
                 message.style.display = "block";
 
                 song.play();
