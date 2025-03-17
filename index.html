@@ -18,8 +18,8 @@
         }
 
         #loveButton {
-            font-size: 24px;
-            padding: 15px 30px;
+            font-size: 30px;
+            padding: 20px 40px;
             cursor: pointer;
             background-color: #ff4b5c;
             color: white;
@@ -32,13 +32,13 @@
         #messageContainer {
             display: none;
             position: relative;
-            width: 200px;
-            height: 180px;
+            width: 300px;
+            height: 280px;
         }
 
         #heartShape {
-            width: 350px;
-            height: 320px;
+            width: 450px;
+            height: 420px;
             background-color: red;
             position: relative;
             clip-path: path('M100,30 C140,-20 200,30 180,90 C170,120 100,170 100,170 C100,170 30,120 20,90 C0,30 60,-20 100,30 Z');
@@ -49,7 +49,7 @@
         }
 
         #message {
-            font-size: 48px;
+            font-size: 90px;
             color: white;
             font-weight: bold;
             text-align: center;
@@ -58,28 +58,33 @@
         .heart {
             position: absolute;
             color: red;
-            font-size: 50px;
+            font-size: 80px;
             animation: fall 4s linear infinite;
         }
 
         @keyframes fall {
             0% { transform: translateY(0) scale(1); opacity: 1; }
-            100% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+            100% { transform: translateY(100vh) scale(1.2); opacity: 0; }
         }
 
         /* Povećaj font i srce za još veće mobilne uređaje */
         @media (max-width: 600px) {
             #heartShape {
-                width: 400px;
-                height: 380px;
+                width: 500px;
+                height: 470px;
             }
 
             #message {
-                font-size: 72px; /* Još veći font za mobilne uređaje */
+                font-size: 100px; /* Još veći font za mobilne uređaje */
             }
 
             .heart {
-                font-size: 70px; /* Povećana veličina padajućih srca */
+                font-size: 100px; /* Povećana veličina padajućih srca */
+            }
+
+            #loveButton {
+                font-size: 36px;
+                padding: 30px 60px;
             }
         }
     </style>
@@ -120,8 +125,8 @@
 
         button.addEventListener("click", function() {
             count++;
-            button.style.fontSize = 24 + count * 5 + "px";
-            button.style.padding = 15 + count * 2 + "px";
+            button.style.fontSize = 30 + count * 5 + "px";
+            button.style.padding = 20 + count * 3 + "px";
 
             let newPos = getRandomPosition();
             button.style.left = `${newPos.x}px`;
@@ -145,7 +150,7 @@
             heart.classList.add("heart");
             heart.style.left = Math.random() * window.innerWidth + "px";
             heart.style.top = "-20px";
-            heart.style.fontSize = Math.random() * 30 + 10 + "px";
+            heart.style.fontSize = Math.random() * 50 + 50 + "px"; // Veća srca
             document.body.appendChild(heart);
 
             setTimeout(() => {
