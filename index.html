@@ -53,10 +53,6 @@
             color: white;
             font-weight: bold;
             text-align: center;
-            line-height: 1.2;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
         }
 
         .heart {
@@ -82,7 +78,11 @@
         </div>
     </div>
 
-    <audio id="loveSong" src="drska-zeno-plava.mp3"></audio>
+    <!-- MP3 audio -->
+    <audio id="loveSong" controls>
+        <source src="drska-zeno-plava.mp3" type="audio/mp3">
+        Vaš preglednik ne podržava audio element.
+    </audio>
 
     <script>
         let count = 0;
