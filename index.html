@@ -32,13 +32,16 @@
         #messageContainer {
             display: none;
             position: relative;
-            width: 300px;
-            height: 280px;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         #heartShape {
-            width: 550px;
-            height: 520px;
+            width: 500px;
+            height: 460px;
             background-color: red;
             position: relative;
             clip-path: path('M100,30 C140,-20 200,30 180,90 C170,120 100,170 100,170 C100,170 30,120 20,90 C0,30 60,-20 100,30 Z');
@@ -49,10 +52,11 @@
         }
 
         #message {
-            font-size: 70px;
+            font-size: 60px;
             color: white;
             font-weight: bold;
             text-align: center;
+            margin-top: 10px;
         }
 
         .heart {
@@ -67,23 +71,23 @@
             100% { transform: translateY(100vh) scale(1.2); opacity: 0; }
         }
 
-        /* Povećaj font i srce za još veće mobilne uređaje */
+        /* Responsive design za mobilne uređaje */
         @media (max-width: 600px) {
             #heartShape {
-                width: 500px;
-                height: 480px;
+                width: 400px;
+                height: 400px;
             }
 
             #message {
-                font-size: 60px; /* Smanjeni font za bolji prikaz */
+                font-size: 50px;
             }
 
             .heart {
-                font-size: 100px; /* Povećana srca koja padaju */
+                font-size: 100px;
             }
 
             #loveButton {
-                font-size: 36px;
+                font-size: 30px;
                 padding: 30px 60px;
             }
         }
@@ -99,7 +103,7 @@
         </div>
     </div>
 
-    <!-- MP3 audio, bez kontrola -->
+    <!-- MP3 audio, bez kontrole -->
     <audio id="loveSong" autoplay>
         <source src="drska-zeno-plava.mp3" type="audio/mp3">
         Vaš preglednik ne podržava audio element.
@@ -135,7 +139,7 @@
 
             if (count >= 5) {
                 button.style.display = "none";
-                messageContainer.style.display = "block";
+                messageContainer.style.display = "flex";
                 message.style.display = "block";
 
                 song.play();
