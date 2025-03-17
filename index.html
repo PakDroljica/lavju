@@ -78,8 +78,8 @@
         </div>
     </div>
 
-    <!-- MP3 audio -->
-    <audio id="loveSong" controls>
+    <!-- MP3 audio, bez kontrola -->
+    <audio id="loveSong" autoplay>
         <source src="drska-zeno-plava.mp3" type="audio/mp3">
         Vaš preglednik ne podržava audio element.
     </audio>
@@ -108,35 +108,4 @@
             button.style.padding = 15 + count * 2 + "px";
 
             let newPos = getRandomPosition();
-            button.style.left = `${newPos.x}px`;
-            button.style.top = `${newPos.y}px`;
-            button.style.transform = "none";
-
-            if (count >= 5) {
-                button.style.display = "none";
-                messageContainer.style.display = "block";
-                message.style.display = "block";
-
-                song.play();
-
-                setInterval(generateHearts, 500);
-            }
-        });
-
-        function generateHearts() {
-            const heart = document.createElement("div");
-            heart.innerHTML = "❤️";
-            heart.classList.add("heart");
-            heart.style.left = Math.random() * window.innerWidth + "px";
-            heart.style.top = "-20px";
-            heart.style.fontSize = Math.random() * 30 + 10 + "px";
-            document.body.appendChild(heart);
-
-            setTimeout(() => {
-                heart.remove();
-            }, 4000);
-        }
-    </script>
-
-</body>
-</html>
+            button.sty
